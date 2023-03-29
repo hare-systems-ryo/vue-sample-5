@@ -80,16 +80,15 @@ export namespace Dialog {
 }
 /**
  * Dialogを使用する際に使用するオブジェクト
- * 
+ *
  */
 export interface Dialog {
-  Show: (message: string, title: string, option?: Dialog.Option) => Promise< Dialog.Result>;
+  Show: (message: string, title: string, option?: Dialog.Option) => Promise<Dialog.Result>;
   InitOption: typeof Dialog.InitOption;
-  Result:typeof Dialog.Result;
-  BtnTheme:typeof Dialog.BtnTheme;
-  Theme:typeof Dialog.Theme;
+  Result: typeof Dialog.Result;
+  BtnTheme: typeof Dialog.BtnTheme;
+  Theme: typeof Dialog.Theme;
 }
-
 
 export class DialogItem {
   public message: string;
@@ -104,15 +103,9 @@ export class DialogItem {
 
   public show = () => {
     return new Promise<Dialog.Result>((resolve, reject) => {
-      this.leftClick = () => {
-        resolve(Dialog.Result.Left);
-      };
-      this.rightClick = () => {
-        resolve(Dialog.Result.Right);
-      };
-      this.cancelClick = () => {
-        resolve(Dialog.Result.Cancel);
-      };
+      this.leftClick = () => resolve(Dialog.Result.Left);
+      this.rightClick = () => resolve(Dialog.Result.Right);
+      this.cancelClick = () => resolve(Dialog.Result.Cancel);
     });
   };
 
@@ -120,3 +113,6 @@ export class DialogItem {
   public rightClick = () => console.log();
   public cancelClick = () => console.log();
 }
+
+
+

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { reactive, ref, computed } from 'vue';
+import dayjs from 'dayjs';
+
+import { reactive, ref, computed, Ref } from 'vue';
 import VcDialog from './vc-dialog.vue';
 import { useStoreDialog } from './store-dialog';
 import Prism from 'prismjs';
@@ -106,9 +108,34 @@ const state = reactive<State>({
     'javascript'
   );
 });
+class Test {
+  public text: string;
+  constructor(text: string) {
+    this.text = text;
+  }
+  public setText = (text: string) => {
+    this.text = text;
+    console.log(this.text);
+  };
+}
+// class Test {
+//   public text: Ref<string>;
+//   constructor(text: string) {
+//     this.text = ref(text);
+//   }
+//   public setText = (text: string) => {
+//     this.text.value = text;
+//     console.log(this.text);
+//   };
+// }
+const testData = ref(new Test('aaa'));
 </script>
 <template>
   <div class="container-fluid">
+    <div class="" @click="testData.setText(dayjs().format('x'))">{{ testData.text }}</div>
+
+    <div class="" @click="testData.text = dayjs().format('x')">{{ testData.text }}</div>
+
     <!-- Dialog Sample -->
     <div class="card mt-2 border-primary">
       <div class="card-header bg-primary text-light">Dialog Sample</div>

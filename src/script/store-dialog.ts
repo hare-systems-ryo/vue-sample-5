@@ -4,7 +4,6 @@ import { defineStore } from 'pinia';
 import { Dialog, DialogItem } from './dialog';
 
 export interface StoreState {
-  isInit: boolean;
   penndingList: {
     ts: string;
     data: DialogItem;
@@ -13,7 +12,6 @@ export interface StoreState {
 export const useStoreDialog = defineStore('storeDialog', {
   state: (): StoreState => {
     return {
-      isInit: false,
       penndingList: [],
     };
   },
